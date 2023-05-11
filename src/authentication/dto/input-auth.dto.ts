@@ -8,3 +8,12 @@ export class CreateUser{
     @IsNotEmpty()
     password: string
 }
+
+export class LoginUser{
+    @IsEmail()
+    @IsNotEmpty()
+    email: string
+
+    @IsNotEmpty()
+    password: string
+}

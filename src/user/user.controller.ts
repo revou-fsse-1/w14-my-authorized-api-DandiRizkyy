@@ -13,25 +13,6 @@ export class UserController {
     @Post()
     async createUser(@Body() userDto: UserInput){
         return this.userService.createUser(userDto);
-        // const hashPassword = await argon.hash(userDto.password);
-
-        // try{
-        //     return this.prisma.user.create({
-        //         data: {
-        //             name: userDto.name,
-        //             email: userDto.email,
-        //             password: hashPassword,
-        //         }
-        //     })
-        // }
-        // catch{error}{
-        //     if (error instanceof PrismaClientKnownRequestError) {
-        //         if (error.code === 'P2002') {
-        //           throw new ForbiddenException('Credential already taken');
-        //         }
-        //       }
-        //       throw error;
-        // }
     }
 
     @Get()

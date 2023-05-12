@@ -83,6 +83,7 @@ docker-compose stop
 ---
 
 ![](/assets/register-and-login.png)
+<br>
 ![](/assets/logout-session.png)
 
 ### Postman Documentation

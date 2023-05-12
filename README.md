@@ -155,7 +155,7 @@ You can follow my documentation on `postman`: [Link](https://documenter.getpostm
 - Docker
 - Postman
 
-## Support
+## Support 🙌
 
 ---
 

@@ -92,7 +92,7 @@ You can follow my documentation on `postman`: [Link](https://documenter.getpostm
 
 1. First of all, all you need to do is registering your email and password first using the following links
 
-- RestAPI `register` Links : https://w14-my-authorized-api-dandirizkyy-production.up.railway.app/auth/register
+- RestAPI `register` Links : https://w14-security-dandirizky.onrender.com/auth/register
 
   ```
   || Register Endpoint ||
@@ -102,7 +102,7 @@ You can follow my documentation on `postman`: [Link](https://documenter.getpostm
 
 2. After that, you can login with email and password that you registered before
 
-- RestAPI `login` Links : https://w14-my-authorized-api-dandirizkyy-production.up.railway.app/auth/login
+- RestAPI `login` Links : https://w14-security-dandirizky.onrender.com/auth/login
 
   ```
   || Login Endpoint ||
@@ -112,7 +112,7 @@ You can follow my documentation on `postman`: [Link](https://documenter.getpostm
 
 3. After you successfully login, you can access the resources endpoint such as `users` and `products`.
 
-- RestAPI `users` Links : https://w14-my-authorized-api-dandirizkyy-production.up.railway.app/users
+- RestAPI `users` Links : https://w14-security-dandirizky.onrender.com/users
 
   ```
   || Users Endpoint ||
@@ -120,7 +120,7 @@ You can follow my documentation on `postman`: [Link](https://documenter.getpostm
   GET     /users
   ```
 
-- RestAPI `products` Links : https://w14-my-authorized-api-dandirizkyy-production.up.railway.app/products
+- RestAPI `products` Links : https://w14-security-dandirizky.onrender.com/products
 
   ```
   || Products Endpoint ||
@@ -136,7 +136,7 @@ You can follow my documentation on `postman`: [Link](https://documenter.getpostm
 
 4. Anddd for the last step.. dont forget to logout :)
 
-- RestAPI `logout` Links : https://w14-my-authorized-api-dandirizkyy-production.up.railway.app/auth/logout
+- RestAPI `logout` Links : https://w14-security-dandirizky.onrender.com/auth/logout
 
   ```
   || Logout Endpoint ||

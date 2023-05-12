@@ -88,7 +88,7 @@ You can follow my documentation on `postman`: [Link](https://documenter.getpostm
 
 ---
 
-### Endpoint Documentation (Railway Endpoint)
+### Endpoint Documentation
 
 1. First of all, all you need to do is registering your email and password first using the following links
 

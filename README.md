@@ -16,7 +16,7 @@ In order to run this project locally, you need to clone this repository first us
 $ https://github.com/revou-fsse-1/w14-my-authorized-api-DandiRizkyy.git
 ```
 
-then run `yarn install` in your terminal to download all dependencies
+then run `pnpm install` in your terminal to download all dependencies
 
 ```bash
 $ pnpm install

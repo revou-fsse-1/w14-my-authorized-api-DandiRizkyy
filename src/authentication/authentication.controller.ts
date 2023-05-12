@@ -1,7 +1,8 @@
-import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Post, Request, UseGuards } from '@nestjs/common';
 import { AuthenticationService } from './authentication.service';
 import { CreateUser, LoginUser } from './dto/input-auth.dto';
 import { LocalAuthGuard } from './local-auth.guard';
+import { AuthenticatedGuard } from './authenticated.guard';
 
 @Controller('auth')
 export class AuthenticationController {
@@ -18,5 +19,14 @@ export class AuthenticationController {
     @Post('login')
     async loginUser(@Body() authDto: LoginUser){
         console.log(`${authDto.email} is logging in`)
+        return `Login Successfully.`
+    }
+
+    // logout
+    @UseGuards(AuthenticatedGuard)
+    @Post('logout')
+    logoutUser(@Request() req){
+        req.session.destroy();
+        return `Logout Successfully.`
     }
 }

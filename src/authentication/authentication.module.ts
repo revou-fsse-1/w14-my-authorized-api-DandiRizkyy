@@ -5,10 +5,11 @@ import { PrismaModule } from 'src/prisma/prisma.module';
 import { LocalStrategy } from './local.strategy';
 import { LocalAuthGuard } from './local-auth.guard';
 import { SessionSerializer } from './session.serializer';
+import { AuthenticatedGuard } from './authenticated.guard';
 
 @Module({
   imports:[PrismaModule],
-  providers: [AuthenticationService, LocalStrategy, LocalAuthGuard, SessionSerializer],
+  providers: [AuthenticationService, LocalStrategy, LocalAuthGuard, SessionSerializer, AuthenticatedGuard],
   controllers: [AuthenticationController]
 })
 export class AuthenticationModule {}

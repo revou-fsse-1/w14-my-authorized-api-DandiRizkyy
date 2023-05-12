@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { PassportSerializer } from "@nestjs/passport";
-import { Register } from "@prisma/client";
+import { User } from "@prisma/client";
 import { PrismaService } from "src/prisma/prisma.service";
 
 @Injectable()
@@ -10,7 +10,7 @@ constructor(private readonly prismaService: PrismaService){
 }
 
     async deserializeUser(payload: number, done: Function) {
-        const user = await this.prismaService.register.findFirst({
+        const user = await this.prismaService.user.findFirst({
             where: {
                 id: payload,
             }
@@ -23,7 +23,7 @@ constructor(private readonly prismaService: PrismaService){
         done(null, user);
     }
 
-    serializeUser(user: Register, done: Function) {
+    serializeUser(user: User, done: Function) {
         done(null, user.id);
     }
 }

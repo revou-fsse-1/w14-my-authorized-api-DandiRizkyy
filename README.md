@@ -1,40 +1,65 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/4Y4godVE)
 
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Week 14 Dandi Rizky (Authentication and Authorization)
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+---
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+For this week assignment, i'm trying to make an authentication/authorization using session token on RESTAPI that i've been created on week 13 so only users that already registered can access the resource endpoint.
 
-## Description
+## Installation 🔨
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+---
 
-## Installation
+In order to run this project locally, you need to clone this repository first using git clone
+
+```bash
+$ https://github.com/revou-fsse-1/w14-my-authorized-api-DandiRizkyy.git
+```
+
+then run `yarn install` in your terminal to download all dependencies
 
 ```bash
 $ pnpm install
 ```
 
-## Running the app
+create `docker-compose.yaml` on root folder (where the package.json installed) and fill with these commands to install postgresql database locally on your computer
+
+```
+version: "3"
+services:
+  postgres:
+    image: postgres:14
+    ports:
+    - 5432:5432
+    environment:
+    - POSTGRES_DB=revou
+    - POSTGRES_USER=revou
+    - POSTGRES_PASSWORD=password
+    volumes:
+    - ./postgres-data:/var/lib/postgresql/data
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=user@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=password
+    ports:
+      - 15432:80
+
+```
+
+don't forget to create `.env` files on root folder same like before with these command:
+
+```
+DATABASE_URL="postgresql://revou:password@localhost:5432/revou?schema=public"
+```
+
+and run docker with these command:
+
+```
+docker-compose up -d
+```
+
+after that you can start the server using these following command :
 
 ```bash
 # development
@@ -47,20 +72,92 @@ $ pnpm run start:dev
 $ pnpm run start:prod
 ```
 
-## Test
+if you want to stop docker, you can use these command
 
-```bash
-# unit tests
-$ pnpm run test
-
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
+```
+docker-compose stop
 ```
 
+## Documentation 📷
+
+---
+
+### Postman Documentation
+
+You can follow my documentation on `postman`: [Link](https://documenter.getpostman.com/view/24409630/2s93ecuUx2)
+
+---
+
+### Endpoint Documentation (Railway Endpoint)
+
+1. First of all, all you need to do is registering your email and password first using the following links
+
+- RestAPI `register` Links : https://w14-my-authorized-api-dandirizkyy-production.up.railway.app/auth/register
+
+  ```
+  || Register Endpoint ||
+
+  POST     /auth/register
+  ```
+
+2. After that, you can login with email and password that you registered before
+
+- RestAPI `login` Links : https://w14-my-authorized-api-dandirizkyy-production.up.railway.app/auth/login
+
+  ```
+  || Login Endpoint ||
+
+  POST     /auth/login
+  ```
+
+3. After you successfully login, you can access the resources endpoint such as `users` and `products`.
+
+- RestAPI `users` Links : https://w14-my-authorized-api-dandirizkyy-production.up.railway.app/users
+
+  ```
+  || Users Endpoint ||
+
+  GET     /users
+  ```
+
+- RestAPI `products` Links : https://w14-my-authorized-api-dandirizkyy-production.up.railway.app/products
+
+  ```
+  || Products Endpoint ||
+
+  GET     /products
+  GET     /products/1
+  POST    /products
+  PUT     /products/1
+  PATCH   /products/1
+  DELETE  /products/1
+
+  ```
+
+4. Anddd for the last step.. dont forget to logout :)
+
+- RestAPI `logout` Links : https://w14-my-authorized-api-dandirizkyy-production.up.railway.app/auth/logout
+
+  ```
+  || Logout Endpoint ||
+
+  POST     /auth/logout
+  ```
+
+## Technologies 💻
+
+---
+
+- NestJS
+- Typescript
+- PrismaORM
+- PostgreSQL
+- Docker
+- Postman
+
 ## Support
+
+---
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 

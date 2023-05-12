@@ -82,6 +82,9 @@ docker-compose stop
 
 ---
 
+![](/assets/register-and-login.png)
+![](/assets/logout.png)
+
 ### Postman Documentation
 
 You can follow my documentation on `postman`: [Link](https://documenter.getpostman.com/view/24409630/2s93ecuUx2)
